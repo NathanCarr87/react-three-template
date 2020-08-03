@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import * as THREE from "three";
 import * as treeUtility from "./utilities/tree_utility";
+
 class App extends Component {
   componentDidMount() {
     var scene = new THREE.Scene();
@@ -31,7 +32,10 @@ class App extends Component {
     scene.add(plane);
     camera.position.y = 5
     camera.position.z = 25;
-    scene.add(treeUtility.createTree());
+    const tree = treeUtility.createTree()
+    tree.position.z += 15
+    scene.add(tree);
+    console.log(scene)
     var animate = function() {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
